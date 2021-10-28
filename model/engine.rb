@@ -2,10 +2,10 @@
 class Engine
   attr_reader :rpm, :max_rpm, :torque
 
-  def initialize(max_rpm, torque)
+  def initialize(config)
     @rpm = 0
-    @max_rpm = max_rpm
-    @torque = torque
+    @max_rpm = config[:max_rpm]
+    @torque = config[:torque]
   end
 
   def ch_rpm(value)

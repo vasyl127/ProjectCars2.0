@@ -1,12 +1,17 @@
+require_relative 'engine'
+require_relative 'gearbox'
+
 
 class Car
-  attr_reader :speed, :max_speed, :odo, :name
+  attr_reader :speed, :max_speed, :odo, :name, :engine, :gearbox
 
-  def initialize(max_speed, name)
+  def initialize(config)
     @speed = 0
     @odo = 0
-    @max_speed = max_speed
-    @name = name
+    @max_speed = config[:max_speed]
+    @name = config[:name]
+    @engine = Engine.new(config)
+    @gearbox = Gearbox.new(config)
   end
 
   def ch_speed(value)

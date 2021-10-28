@@ -5,12 +5,12 @@ require_relative "gearbox_service"
 class CarService
   attr_reader :eng_service, :gb_service, :car, :engine, :gearbox
 
-  def initialize(car, engine, gearbox)
+  def initialize(car)
     @eng_service = EngService.new
     @gb_service = GearboxService.new
     @car = car
-    @engine = engine
-    @gearbox = gearbox
+    @engine = car.engine
+    @gearbox = car.gearbox
   end
 
   def start
@@ -51,7 +51,7 @@ Max Speed --> #{car.max_speed}
 Odometr   --> #{car.odo}"
 print "\n[ Press Enter to continue ]"
 i = gets.chomp()
-View.remove(10)
+View.remove(11)
   end
 
   def shift_odo

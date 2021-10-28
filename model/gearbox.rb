@@ -2,9 +2,9 @@
 class Gearbox
   attr_reader :gear, :max_gear
 
-  def initialize(max_gear)
+  def initialize(config)
     @gear = 0
-    @max_gear = max_gear
+    @max_gear = config[:max_gear]
   end
 
   def ch_gear(value)

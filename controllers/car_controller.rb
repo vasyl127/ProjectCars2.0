@@ -6,11 +6,8 @@ require_relative "../model/car"
 class CarController
   attr_reader :car_service, :car, :engine, :gearbox
 
-  def initialize(config)
-    @car = Car.new(config.max_speed, config.name)
-    @engine = Engine.new(config.max_rpm, config.torque)
-    @gearbox =  Gearbox.new(config.max_gear)
-    @car_service = CarService.new(car, engine, gearbox)
+  def initialize(car)
+    @car_service = CarService.new(car)
   end
 
   def start
