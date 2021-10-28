@@ -8,11 +8,11 @@ class GarageController
   end
 
   def get_car(value)
-    garage.get_car(value)
+    garage.cars[value]
   end
 
   def get_all_cars
-    garage.get_all_cars
+
   end
 
   def update_car
@@ -20,7 +20,7 @@ class GarageController
   end
 
   def add_car(car)
-    garage.add_to_garage(car)
+    garage.cars << car
   end
 
   def remove_car
