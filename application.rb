@@ -1,6 +1,5 @@
 require_relative 'controllers/app_controller'
 
-
 app = App.new
 car = app.create_car
 
