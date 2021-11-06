@@ -15,5 +15,11 @@ class << self
     return string
   end
 
+  def click_enter
+    print "\n[ Press Enter to continue ]"
+    i = gets.chomp()
+    remove(2)
+  end
+
 end
 end

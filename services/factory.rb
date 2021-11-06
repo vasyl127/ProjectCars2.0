@@ -1,5 +1,6 @@
 require_relative '../view/view'
 require_relative '../model/car'
+require_relative 'validator'
 
 
 class Factory
@@ -13,31 +14,90 @@ class Factory
     @max_speed = 210
   end
 
+  def car_params
+    "Car params
+Name      --> #{name}
+MAX RPM   --> #{max_rpm}
+Torque    --> #{torque}
+Max Gear  --> #{max_gear}
+Max Speed --> #{max_speed}
+
+"
+  end
 
   def create_car
-    puts "Use default car params?(1/0)"
-    load_params if View.user_input != '1'
-    View.remove(1)
+    puts car_params
+    puts "Do you want to change default params?(1/0)"
+    if View.user_input == '1'
+      View.remove(8)
+      load_params
+    else
+      View.remove(8)
+    end
     @car = Car.new(max_rpm: max_rpm, torque: torque, max_gear: max_gear, max_speed: max_speed, name: name)
   end
 
   def load_params
-    puts "  Enter name:"
-    @name = View.user_input
-    View.remove(1)
-    puts "  Enter max_speed:"
-    @max_speed = View.user_input.to_i
-    View.remove(1)
-    puts "  Enter max_rpm:"
-    @max_rpm = View.user_input.to_i
-    View.remove(1)
-    puts "  Enter torque:"
-    @torque = View.user_input.to_i
-    View.remove(1)
-    puts "  Enter max_gear:"
-    @max_gear = View.user_input.to_i
-    View.remove(1)
+    load_name
+    load_max_speed
+    load_max_rpm
+    load_torque
+    load_max_gear
   end
 
+  def load_name
+    puts car_params
+    puts "  Enter name:"
+    string = View.user_input
+    while !Validator.name_valid?(string)
+      string = View.user_input
+    end
+    @name = string
+    View.remove(8)
+  end
+
+  def load_max_speed
+    puts car_params
+    puts "  Enter max_speed:"
+    string = View.user_input
+    while !Validator.max_speed_valid?(string)
+      string = View.user_input
+    end
+    @max_speed = string.to_i
+    View.remove(8)
+  end
+
+  def load_max_rpm
+    puts car_params
+    puts "  Enter max_rpm:"
+    string = View.user_input
+    while !Validator.max_rpm_valid?(string)
+      string = View.user_input
+    end
+    @max_rpm = string.to_i
+    View.remove(8)
+  end
+
+  def load_torque
+    puts car_params
+    puts "  Enter torque:"
+    string = View.user_input
+    while !Validator.torque_valid?(string, max_rpm)
+      string = View.user_input
+    end
+    @torque = string.to_i
+    View.remove(8)
+  end
+
+  def load_max_gear
+    puts car_params
+    puts "  Enter max_gear:"
+    string = View.user_input
+    while !Validator.max_gear_valid?(string)
+      string = View.user_input
+    end
+    @max_gear = string.to_i
+    View.remove(8)
+  end
 
 end

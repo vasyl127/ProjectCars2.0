@@ -5,7 +5,7 @@ require_relative '../services/factory'
 
 
 
-class App
+class AppController
   attr_reader :factory, :garage
 
   def initialize

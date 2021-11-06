@@ -49,9 +49,8 @@ Max Gear  --> #{gearbox.max_gear}
 Speed     --> #{car.speed}
 Max Speed --> #{car.max_speed}
 Odometr   --> #{car.odo}"
-print "\n[ Press Enter to continue ]"
-i = gets.chomp()
-View.remove(11)
+View.click_enter
+View.remove(10)
   end
 
   def shift_odo
