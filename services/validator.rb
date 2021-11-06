@@ -3,11 +3,6 @@ require_relative '../view/view'
 class Validator
 class << self
 
-
-  def valid?(string)
-    validate(string)
-  end
-
   def name_valid?(string)
     if string != ''
       true

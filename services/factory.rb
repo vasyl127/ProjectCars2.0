@@ -7,11 +7,12 @@ class Factory
   attr_reader :max_rpm, :torque, :max_gear, :max_speed, :name, :car
 
   def initialize
-    @name = "Car_Name"
-    @max_rpm = 8000
-    @torque = 4100
-    @max_gear = 8
-    @max_speed = 210
+    # @name = "Default_Name"
+    # @max_rpm = 4000
+    # @torque = 2100
+    # @max_gear = 5
+    # @max_speed = 160
+    go_to_default_params
   end
 
   def car_params
@@ -35,14 +36,23 @@ Max Speed --> #{max_speed}
       View.remove(8)
     end
     @car = Car.new(max_rpm: max_rpm, torque: torque, max_gear: max_gear, max_speed: max_speed, name: name)
+    go_to_default_params
+  end
+
+  def go_to_default_params
+    @name = "Default_Name"
+    @max_rpm = 4000
+    @torque = 2100
+    @max_gear = 5
+    @max_speed = 160
   end
 
   def load_params
     load_name
-    load_max_speed
     load_max_rpm
     load_torque
     load_max_gear
+    load_max_speed
   end
 
   def load_name

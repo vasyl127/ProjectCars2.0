@@ -13,11 +13,11 @@ class AppController
     @garage = GarageController.new
   end
 
-  def create_car
+  def create_car(value)
     factory.create_car
     garage.add_car(factory.car)
-    car = CarController.new(garage.get_car(0))
-    return car
+    car = CarController.new(garage.get_car(value))
+    car
   end
 
 end
